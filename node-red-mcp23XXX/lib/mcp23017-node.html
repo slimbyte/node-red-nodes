@@ -1,0 +1,55 @@
+<script type="text/x-red" data-template-name="mcp23017">
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="Topic">
+    </div>
+    <div class="form-row">
+        <label for="node-input-address"><i class="fa fa-tag"></i> Address</label>
+        <input type="text" id="node-input-address" placeholder="Address">
+    </div>
+    <div class="form-row">
+        <label for="node-input-bus"><i class="fa fa-tag"></i> Bus Number</label>
+        <input type="text" id="node-input-bus" placeholder="bus">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-random"></i> Mode</label>
+        <input type="checkbox" id="node-input-reverse" placeholder="Reverse" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-reverse" style="width: 70%;">Use reverse logic?</label>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="mcp23017">
+   <p><b>MCP23017</b> Output node, control the pins via topic and playload.</p>
+   <p><b>Address:</b>  0x20 (default) or similar.</p>
+   <p><b>Bus Number:</b> 1 (default) indicate the tah to /dev/i2c-1 , but may need to be changed to 0 (/dev/i2c-0) depending on your Raspberry PI.</p>
+   <p><b>Topic:</b> set to the root of the status topic, e.g. 'buss/status', a status message will be generated per pin 0..15.</p>
+   <p><b>Use reverse logic:</b> is used to set MCP23017 to use reversed logic.</p>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('mcp23017', {
+    category: "Raspberry Pi",
+    paletteLabel: 'MCP23017',
+	color: "#C6DBEF",
+    defaults: {
+        name: { value: ""},
+        topic: { value: ""},
+        address: { value: "0x20", required:true },
+        bus: { value: "1", required:true },
+        reverse: { value: false, required:true }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "rpi.png",
+    label: function() {
+      return this.name || this.topic || "mcp23017";
+    },
+    labelStyle: function() {
+      return this.name? "node_label_italic" : "";
+    }
+  });
+</script>

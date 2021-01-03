@@ -1,0 +1,30 @@
+{
+  "name"       : "node-red-mcp23xxx",
+  "version"    : "0.1.0",
+  "description": "Library to use the MCP23008 and MCP23017 I/O Expanders with the Raspberry Pi",
+  "keywords": [
+    "mcp23008",
+    "mcp23017",
+    "node-red"
+  ],
+  "repository" : {
+        "type": "git",
+        "url" : "https://github.com/slimbyte/node-red-nodes.git",
+        "path": "/tree/master/node-red-mcp23XXX"
+  },
+  "node-red": {
+    "nodes": {
+      "mcp23008": "lib/mcp23008-node.js",
+	  "mcp23017": "lib/mcp23017-node.js"
+    }
+  },
+  "author": {
+     "email": "chitu.sorin@gmail.com",
+     "name" : "Sorin Chitu",
+	 "url"  : "http://nodered.org"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "i2c-bus": "^4.0.9"
+  }
+}
